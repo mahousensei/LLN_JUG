@@ -2,3 +2,8 @@ LLN_JUG
 =======
 
 Source code of Louvain-La-Neuve JUG
+
+NO COPYRIGHT ON THIS SOURCE CODE
+NO WARRANTY NEITHER : USE IT AT YOUR OWN RISKS
+
+
