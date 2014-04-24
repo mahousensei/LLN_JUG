@@ -1,4 +1,4 @@
-package com.tritschler.jcep;
+package jug.lln;
 
 import java.util.ArrayList;
 import java.util.Calendar;
