@@ -1,1 +1,4 @@
-ddd
+The purpose of this project is to create one application:
+1. create pseudo-random stock quotes.
+2. performing statistical analysis on these numbers.
+In order to 
