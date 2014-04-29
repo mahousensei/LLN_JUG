@@ -3,14 +3,21 @@ Goal
 The purpose of this project is to create one Java 8 application using Lambdas, Streams and new date managament.
 In the first phase we develop the application with Java 7.
 In the second phase we re-write it with Java 8 in order to compare.
+Project
+-------
+We will build one application computing basic statistics about fictious Stock quotes.
+So, the first task is to create a program generating pseudo-random stock quotes
 
+With these files, the secons task is to load them and compute statistics.
 
-
-1. create pseudo-random stock quotes.
-2. performing statistical analysis on these numbers.
 In order to 
 
 Implementation
 --------------
+task 1 : stock 
+- generate pseudo symbols
+- generate pseudo quotes
+- creat the files
+
 
 History.java
