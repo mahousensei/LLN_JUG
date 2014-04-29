@@ -1,4 +1,16 @@
-The purpose of this project is to create one application:
+Goal
+----
+The purpose of this project is to create one Java 8 application using Lambdas, Streams and new date managament.
+In the first phase we develop the application with Java 7.
+In the second phase we re-write it with Java 8 in order to compare.
+
+
+
 1. create pseudo-random stock quotes.
 2. performing statistical analysis on these numbers.
 In order to 
+
+Implementation
+--------------
+
+History.java
