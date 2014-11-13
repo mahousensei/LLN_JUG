@@ -13,12 +13,15 @@ import java.net.ProxySelector;
 import java.net.URI;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class HttpUrlConnectionReader {
 	 
 	private URL url;
+	
+	private List<String> urls = new ArrayList<>();
 	
 	  public HttpUrlConnectionReader(String url) throws MalformedURLException {
 		  this.url = new URL(url);
@@ -28,17 +31,20 @@ public class HttpUrlConnectionReader {
 		  Authenticator authenticator = new Authenticator() {
 		        public PasswordAuthentication getPasswordAuthentication() {
 		            return (new PasswordAuthentication("user",
-		                    "password".toCharArray()));
+		                    "mypassword".toCharArray()));
 		        }
 		    };
 		    Authenticator.setDefault(authenticator);
-		Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("xxx.xxx.xxx.xxx", 8080));
+		Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("xxx.xxx.xxx.xxx", 8012));
 	    HttpURLConnection connection = (HttpURLConnection) url.openConnection(proxy);	       
-	    try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {	      
+	    try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {	      // yeah java 7
 	      connection.connect();	 	      	     
 	      StringBuilder stringBuilder = new StringBuilder();
 	      String line = null;
 	      while ((line = reader.readLine()) != null) {
+	    	  if (line.contains("<a href=\"http://")) {
+	    		  urls.add(line.trim().substring(line.trim().indexOf("<a href=\"http://")+16));
+	    	  }
 	        stringBuilder.append(line + "\n");
 	      }
 	      return stringBuilder.toString();
@@ -54,5 +60,9 @@ public class HttpUrlConnectionReader {
 		  HttpUrlConnectionReader r = new HttpUrlConnectionReader(args[0]);
 		  String html = r.doHttpUrlConnectionAction();
 		  System.out.println(html);
+		  System.out.println(r.urls.size() + " URLs found at " + args[0]);
+		  for (String s: r.urls) {
+			  System.out.println(s);
+		  }
 	  }
 	}
