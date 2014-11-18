@@ -31,13 +31,13 @@ public class HttpUrlConnectionReader {
 		  Authenticator authenticator = new Authenticator() {
 		        public PasswordAuthentication getPasswordAuthentication() {
 		            return (new PasswordAuthentication("user",
-		                    "mypassword".toCharArray()));
+		                    "password".toCharArray()));
 		        }
 		    };
 		    Authenticator.setDefault(authenticator);
 		Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("xxx.xxx.xxx.xxx", 8012));
 	    HttpURLConnection connection = (HttpURLConnection) url.openConnection(proxy);	       
-	    try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {	      // yeah java 7
+	    try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {	      
 	      connection.connect();	 	      	     
 	      StringBuilder stringBuilder = new StringBuilder();
 	      String line = null;
